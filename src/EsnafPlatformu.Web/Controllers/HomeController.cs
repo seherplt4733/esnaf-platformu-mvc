@@ -2,14 +2,26 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using EsnafPlatformu.Web.Models;
 
+
 namespace EsnafPlatformu.Web.Controllers;
 
 public class HomeController : Controller
 {
     public IActionResult Index()
+{
+    var menuItems = new List<MenuItem>
     {
-        return View();
-    }
+        new MenuItem
+        {
+            Name = "Limonlu tavuk",
+            Price = 280m,
+            SortOrder = 20,
+            IsVisible = true
+        }
+    };
+
+    return View(menuItems);
+}
 
     public IActionResult Privacy()
     {

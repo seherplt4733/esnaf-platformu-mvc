@@ -1,8 +1,15 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<EsnafPlatformu.Web.Models.MenuItem>
+
+@{
+    ViewData["Title"] = "Esnaf Platformu";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Esnaf Platformu</h1>
+<h2>Limon &amp; Kekik Menüsü</h2>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.Name – @item.Price TL</li>
+    }
+</ul>
