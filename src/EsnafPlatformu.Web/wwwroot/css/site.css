@@ -29,3 +29,62 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.home-hero {
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.home-hero h1 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.15;
+}
+
+.home-hero p,
+.home-example p {
+    max-width: 55ch;
+}
+
+.home-hero-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.home-cta {
+    display: inline-block;
+    padding: 0.75rem 1.125rem;
+    border-radius: 0.5rem;
+    background-color: #1e4434;
+    color: white;
+    text-decoration: none;
+}
+
+.home-cta:hover,
+.home-cta:focus-visible {
+    background-color: #163328;
+    color: white;
+}
+
+.home-cta:focus-visible {
+    outline: 3px solid #a05b00;
+    outline-offset: 3px;
+}
+
+.home-example {
+    margin: 1rem 0 2rem;
+    padding: 1.25rem;
+    border: 1px solid #dbe4dc;
+    border-radius: 0.75rem;
+    background-color: #f4f7f3;
+}
+
+@media (min-width: 768px) {
+    .home-hero {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+}

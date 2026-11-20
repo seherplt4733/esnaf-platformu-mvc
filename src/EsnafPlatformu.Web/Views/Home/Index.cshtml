@@ -1,15 +1,33 @@
 ﻿@model List<EsnafPlatformu.Web.Models.MenuItem>
 
 @{
-    ViewData["Title"] = "Esnaf Platformu";
+    ViewData["Title"] = "Ana Sayfa";
 }
 
-<h1>Esnaf Platformu</h1>
-<h2>Limon &amp; Kekik Menüsü</h2>
+<section class="home-hero" aria-labelledby="home-title">
+    <div>
+        <h1 id="home-title">İşletmen için bir web sitesi oluştur</h1>
+        <p>İşletmeni tanıt, menünü düzenle ve hazır olduğunda siteni yayınla.</p>
 
-<ul>
-    @foreach (var item in Model)
-    {
-        <li>@item.Name – @item.Price TL</li>
-    }
-</ul>
+        <a class="home-cta" href="#isletme-baslangic">
+            İşletmem için başlayayım
+        </a>
+    </div>
+
+    <img class="home-hero-image"
+         src="/images/restaurant-sample.jpg"
+         alt="Ahşap masa ve sandalyelerle döşenmiş bir restoranın içi" />
+</section>
+
+<section id="isletme-baslangic" class="home-example"
+         aria-labelledby="example-title" tabindex="-1">
+    <h2 id="example-title">Limon &amp; Kekik örneği</h2>
+    <p>Siteni hazırlarken önce işletme bilgilerini, sonra menünü eklersin.</p>
+
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item.Name – @item.Price TL</li>
+        }
+    </ul>
+</section>
