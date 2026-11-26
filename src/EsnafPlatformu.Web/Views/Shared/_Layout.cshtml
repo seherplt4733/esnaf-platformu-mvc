@@ -10,44 +10,90 @@
     <link rel="stylesheet" href="~/EsnafPlatformu.Web.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3"
-             aria-label="Ana menü">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    Esnaf Platformu
-                </a>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md" aria-label="Ana menü">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home"
+                   asp-action="Index">kutvify</a>
 
-                <button class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#mainNavbar"
-                        aria-controls="mainNavbar"
-                        aria-expanded="false"
+                <button class="navbar-toggler" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                        aria-controls="mainNavbar" aria-expanded="false"
                         aria-label="Ana menüyü aç veya kapat">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div id="mainNavbar" class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div id="mainNavbar" class="collapse navbar-collapse">
+                    <ul class="navbar-nav mx-auto gap-md-3">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
-                                Ana Sayfa
-                            </a>
+                            <a class="nav-link" asp-area="" asp-controller="Home"
+                               asp-action="Index">Anasayfa</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">
-                                Gizlilik
-                            </a>
+                            <a class="nav-link" asp-area="" asp-controller="Home"
+                               asp-action="Index" asp-fragment="ozellikler">Özellikler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home"
+                               asp-action="Index" asp-fragment="tasarimlar">Tasarımlar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home"
+                               asp-action="Index" asp-fragment="nasil-calisir">Nasıl çalışır?</a>
                         </li>
                     </ul>
+
+                    <div class="d-flex flex-wrap align-items-center gap-2 py-2 py-md-0">
+                    <partial name="~/Views/Shared/_LoginPartial.cshtml" />
+
+              <a class="home-cta" asp-area="" asp-controller="Home"
+       asp-action="Index" asp-fragment="nasil-calisir">Ücretsiz başla</a>
+               </div>
                 </div>
             </div>
         </nav>
     </header>
 
     <div class="container">
+        @if (ViewContext.RouteData.Values["area"]?.ToString() == "BusinessPanel"
+    && User.Identity?.IsAuthenticated == true)
+{
+    <nav class="border-bottom py-2 mb-3" aria-label="İşletme paneli">
+        <ul class="nav flex-wrap">
+            <li class="nav-item">
+                <a class="nav-link" asp-area="BusinessPanel"
+                   asp-controller="Businesses" asp-action="Edit">
+                    İşletme
+                </a>
+            </li>
+
+                <li class="nav-item">
+               <a class="nav-link" asp-area="BusinessPanel"
+            asp-controller="Stores" asp-action="Index">
+               Mağazalar
+               </a>
+                 </li>
+
+            <li class="nav-item">
+                <a class="nav-link" asp-area="BusinessPanel"
+                   asp-controller="MenuItems" asp-action="Index">
+                    Menü
+                </a>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link disabled" aria-disabled="true">Görünüm</span>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link disabled" aria-disabled="true">Yayın</span>
+            </li>
+        </ul>
+    </nav>
+}
+
+        
         <main class="pb-3">
+
+
             @RenderBody()
         </main>
     </div>

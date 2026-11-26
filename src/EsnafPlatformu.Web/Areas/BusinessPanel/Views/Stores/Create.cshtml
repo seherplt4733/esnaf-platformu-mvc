@@ -1,0 +1,33 @@
+@model EsnafPlatformu.Web.ViewModels.StoreCreateViewModel
+
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Yeni mağaza ekle";
+}
+
+<section class="mx-auto my-5" style="max-width: 36rem;">
+    <h1 class="mb-4">Yeni mağaza ekle</h1>
+
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" maxlength="100" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Category" class="form-label"></label>
+            <select asp-for="Category" class="form-select">
+                <option value="">Kategori seç</option>
+                <option value="1">Kafe</option>
+                <option value="2">Mobilya</option>
+            </select>
+            <span asp-validation-for="Category" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Listeye dön</a>
+    </form>
+</section>

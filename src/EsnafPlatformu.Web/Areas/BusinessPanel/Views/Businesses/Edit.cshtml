@@ -1,0 +1,49 @@
+@model EsnafPlatformu.Web.ViewModels.BusinessEditViewModel
+
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "İşletme profilini düzenle";
+    var slug = ViewData["Slug"] as string;
+}
+
+<section class="mx-auto my-5" style="max-width: 42rem;">
+    <h1 class="mb-4">İşletme profilini düzenle</h1>
+
+    @if (TempData["BusinessProfileSaved"] is string message)
+    {
+        <div class="alert alert-success" role="status">@message</div>
+    }
+
+    <p>Site kısa adı <strong>@slug</strong></p>
+
+    <form asp-area="BusinessPanel" asp-controller="Businesses"
+          asp-action="Edit" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="mb-3">
+            <label asp-for="ShortDescription" class="form-label"></label>
+            <input asp-for="ShortDescription" class="form-control" />
+            <span asp-validation-for="ShortDescription" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="About" class="form-label"></label>
+            <textarea asp-for="About" class="form-control" rows="5"></textarea>
+            <span asp-validation-for="About" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Phone" class="form-label"></label>
+            <input asp-for="Phone" type="tel" class="form-control" />
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ContactEmail" class="form-label"></label>
+            <input asp-for="ContactEmail" type="email" class="form-control" />
+            <span asp-validation-for="ContactEmail" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+    </form>
+</section>

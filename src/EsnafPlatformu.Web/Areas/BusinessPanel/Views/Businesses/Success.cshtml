@@ -1,0 +1,14 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Form Doğrulandı";
+}
+
+<section class="py-5">
+    <h1>İşletme bilgileri doğrulandı.</h1>
+    <p>Bilgiler doğrulama kurallarından geçti. Veritabanına kaydetmeyi sonraki adımda ekleyeceğiz.</p>
+
+    <a class="home-cta" asp-area="BusinessPanel"
+       asp-controller="Businesses" asp-action="Create">
+        Forma dön
+    </a>
+</section>

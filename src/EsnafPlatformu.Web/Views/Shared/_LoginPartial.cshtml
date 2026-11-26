@@ -1,0 +1,24 @@
+<div class="d-flex flex-wrap align-items-center gap-2">
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <form asp-area="Identity"
+              asp-page="/Account/Logout"
+              asp-route-returnUrl="@Url.Content("~/")"
+              method="post"
+              class="m-0">
+            <button type="submit" class="btn btn-outline-secondary">
+                Çıkış yap
+            </button>
+        </form>
+    }
+    else
+    {
+        <a class="btn btn-outline-secondary"
+           asp-area="Identity"
+           asp-page="/Account/Login">Giriş yap</a>
+
+        <a class="btn btn-outline-secondary"
+           asp-area="Identity"
+           asp-page="/Account/Register">Hesap oluştur</a>
+    }
+</div>

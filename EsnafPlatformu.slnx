@@ -1,5 +1,9 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/EsnafPlatformu.Business/EsnafPlatformu.Business.csproj" />
+    <Project Path="src/EsnafPlatformu.DataAccess/EsnafPlatformu.DataAccess.csproj" />
+    <Project Path="src/EsnafPlatformu.DTOs/EsnafPlatformu.DTOs.csproj" />
+    <Project Path="src/EsnafPlatformu.Entities/EsnafPlatformu.Entities.csproj" />
     <Project Path="src/EsnafPlatformu.Web/EsnafPlatformu.Web.csproj" />
   </Folder>
 </Solution>

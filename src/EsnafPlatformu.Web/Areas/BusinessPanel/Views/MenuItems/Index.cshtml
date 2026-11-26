@@ -1,0 +1,79 @@
+@using System.Globalization
+@model IReadOnlyList<EsnafPlatformu.DTOs.MenuItemDto>
+
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Menüm";
+    var turkishCulture = CultureInfo.GetCultureInfo("tr-TR");
+}
+
+<section class="my-5">
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+        <h1 class="mb-0">Menüm</h1>
+
+        <a asp-area="BusinessPanel"
+           asp-controller="MenuItems"
+           asp-action="Create"
+           class="btn btn-primary">Menü öğesi ekle</a>
+    </div>
+
+    @if (TempData["MenuMessage"] is string message)
+    {
+        <div class="alert alert-success" role="status">@message</div>
+    }
+
+    @if (Model.Count == 0)
+    {
+        <p>Henüz menü öğesi eklemedin.</p>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">Sıra</th>
+                        <th scope="col">Menü öğesi</th>
+                        <th scope="col">Fiyat</th>
+                        <th scope="col">Durum</th>
+                        <th scope="col">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.SortOrder</td>
+                            <td>@item.Name</td>
+                            <td>@(item.Price.ToString("N2", turkishCulture)) TL</td>
+                            <td>@(item.IsVisible ? "Görünür" : "Gizli")</td>
+                            <td>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a asp-area="BusinessPanel"
+                                       asp-controller="MenuItems"
+                                       asp-action="Edit"
+                                       asp-route-id="@item.Id"
+                                       class="btn btn-sm btn-outline-primary">
+                                        Düzenle
+                                    </a>
+
+                                    <form asp-area="BusinessPanel"
+                                          asp-controller="MenuItems"
+                                          asp-action="Delete"
+                                          asp-route-id="@item.Id"
+                                          method="post"
+                                          class="m-0"
+                                          onsubmit="return confirm('Bu menü öğesini silmek istediğine emin misin?');">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            Sil
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</section>

@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\EsnafPlatformu.DataAccess\EsnafPlatformu.DataAccess.csproj" />
+    <ProjectReference Include="..\EsnafPlatformu.Entities\EsnafPlatformu.Entities.csproj" />
+    <ProjectReference Include="..\EsnafPlatformu.DTOs\EsnafPlatformu.DTOs.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

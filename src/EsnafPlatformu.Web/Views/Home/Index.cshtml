@@ -1,4 +1,4 @@
-﻿@model List<EsnafPlatformu.Web.Models.MenuItem>
+﻿@model EsnafPlatformu.Web.ViewModels.HomeIndexViewModel
 
 @{
     ViewData["Title"] = "Ana Sayfa";
@@ -6,28 +6,74 @@
 
 <section class="home-hero" aria-labelledby="home-title">
     <div>
-        <h1 id="home-title">İşletmen için bir web sitesi oluştur</h1>
-        <p>İşletmeni tanıt, menünü düzenle ve hazır olduğunda siteni yayınla.</p>
+        <h1 id="home-title">
+            İşletmeni seç.
+            <span class="home-title-accent">Siteni kendin tasarla.</span>
+        </h1>
 
-        <a class="home-cta" href="#isletme-baslangic">
-            İşletmem için başlayayım
+        <p>İşletmeni tanıt, tasarımını seç ve siteni kendi tarzına göre düzenle.</p>
+
+        <a class="home-cta" asp-area="BusinessPanel"
+           asp-controller="Businesses" asp-action="Create">
+           İşletmem için başlayayım →
+        </a>
+
+         @if (User.Identity?.IsAuthenticated == true)
+       {
+    <div class="mt-3">
+        <a class="btn btn-outline-primary"
+           asp-area="BusinessPanel"
+           asp-controller="Businesses"
+           asp-action="Edit">
+            Profili düzenle
         </a>
     </div>
 
-    <img class="home-hero-image"
-         src="/images/restaurant-sample.jpg"
-         alt="Ahşap masa ve sandalyelerle döşenmiş bir restoranın içi" />
+    <a class="btn btn-outline-primary"
+   asp-area="BusinessPanel" asp-controller="MenuItems" asp-action="Index">
+    Menüm
+     </a>
+     } 
+
+    </div>
+
+
+    <div class="home-preview-stack">
+        <partial name="_RestaurantPreview" model="Model.MenuItems" />
+
+        <section id="ozellikler" class="home-feature" aria-labelledby="feature-title">
+            <h2 id="feature-title">İçeriğin her tasarımda korunur</h2>
+            <p>Arayüzü değiştirirken işletme bilgilerini ve menünü yeniden girmen gerekmez.</p>
+        </section>
+    </div>
 </section>
 
-<section id="isletme-baslangic" class="home-example"
-         aria-labelledby="example-title" tabindex="-1">
-    <h2 id="example-title">Limon &amp; Kekik örneği</h2>
-    <p>Siteni hazırlarken önce işletme bilgilerini, sonra menünü eklersin.</p>
+<section id="nasil-calisir" class="home-steps" aria-labelledby="steps-title">
+    <h2 id="steps-title">Nasıl çalışır?</h2>
 
-    <ul>
-        @foreach (var item in Model)
+    <ol class="home-steps-list">
+        <li>
+            <h3>İşletmeni anlat</h3>
+            <p>İşletme bilgilerini ve ziyaretçilerine göstereceğin içeriği gir.</p>
+        </li>
+        <li>
+            <h3>Arayüzünü seç</h3>
+            <p>Farklı tasarımları kendi bilgilerinle dene.</p>
+        </li>
+        <li>
+            <h3>Siteni yayınla</h3>
+            <p>İçeriğini önizle ve hazır olduğunda ziyaretçilere aç.</p>
+        </li>
+    </ol>
+</section>
+
+<section id="tasarimlar" class="home-example" aria-labelledby="themes-title">
+    <h2 id="themes-title">Örnek site temaları</h2>
+
+    <div class="theme-grid">
+        @foreach (var theme in Model.Themes)
         {
-            <li>@item.Name – @item.Price TL</li>
+            <partial name="_ThemeCard" model="theme" />
         }
-    </ul>
+    </div>
 </section>

@@ -1,0 +1,63 @@
+@model IReadOnlyList<EsnafPlatformu.DTOs.StoreListItemDto>
+
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Mağazalar";
+}
+
+<section class="my-5">
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+        <h1 class="mb-0">Mağazalar</h1>
+        <a asp-action="Create" class="btn btn-primary">Yeni mağaza ekle</a>
+    </div>
+
+    @if (TempData["StoreMessage"] is string message)
+    {
+        <div class="alert alert-success" role="status">@message</div>
+    }
+
+    @if (Model.Count == 0)
+    {
+        <p>Henüz mağaza eklemedin.</p>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">Mağaza adı</th>
+                        <th scope="col">Kategori</th>
+                        <th scope="col">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var store in Model)
+                    {
+                        var categoryName = store.Category switch
+                        {
+                            1 => "Kafe",
+                            2 => "Mobilya",
+                            _ => "Bilinmeyen kategori"
+                        };
+
+                        <tr>
+                            <td>@store.Name</td>
+                            <td>@categoryName</td>
+                            <td>
+                                @if (store.Category is 1 or 2)
+                                {
+                                    <a asp-action="Manage"
+                                       asp-route-storeId="@store.Id"
+                                       class="btn btn-sm btn-outline-primary">
+                                        @(store.Category == 1 ? "Menüyü yönet" : "Ürünleri yönet")
+                                    </a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</section>

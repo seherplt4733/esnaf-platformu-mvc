@@ -1,0 +1,17 @@
+@model EsnafPlatformu.Web.ViewModels.MenuItemFormViewModel
+
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Menü öğesi ekle";
+}
+
+<section class="mx-auto my-5" style="max-width: 36rem;">
+    <h1 class="mb-4">Menü öğesi ekle</h1>
+
+    <form asp-area="BusinessPanel"
+          asp-controller="MenuItems"
+          asp-action="Create"
+          method="post">
+        <partial name="_Form" model="Model" />
+    </form>
+</section>

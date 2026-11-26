@@ -1,6 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using EsnafPlatformu.Web.Models;
+using EsnafPlatformu.Web.ViewModels;
+using EsnafPlatformu.Entities;
 
 
 namespace EsnafPlatformu.Web.Controllers;
@@ -20,7 +22,25 @@ public class HomeController : Controller
         }
     };
 
-    return View(menuItems);
+    var themes = new List<ThemeCardViewModel>
+{
+    new ThemeCardViewModel
+    {
+        Name = "Ada",
+        Description = "Geniş görseller ve ferah bir yerleşim."
+    },
+    new ThemeCardViewModel
+    {
+        Name = "Çizgi",
+        Description = "Net başlıklar ve sade bir menü düzeni."
+    }
+};
+
+return View(new HomeIndexViewModel
+{
+    MenuItems = menuItems,
+    Themes = themes
+});
 }
 
     public IActionResult Privacy()

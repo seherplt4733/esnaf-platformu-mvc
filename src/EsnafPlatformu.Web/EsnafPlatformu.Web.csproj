@@ -1,9 +1,26 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\EsnafPlatformu.Business\EsnafPlatformu.Business.csproj" />
+    <ProjectReference Include="..\EsnafPlatformu.DTOs\EsnafPlatformu.DTOs.csproj" />
+    <ProjectReference Include="..\EsnafPlatformu.DataAccess\EsnafPlatformu.DataAccess.csproj" />
+    <ProjectReference Include="..\EsnafPlatformu.Entities\EsnafPlatformu.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="10.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.11">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="10.0.2" />
+  </ItemGroup>
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>6c5102fc-cbdf-44a9-bf62-db01e8f1f230</UserSecretsId>
   </PropertyGroup>
 
 </Project>

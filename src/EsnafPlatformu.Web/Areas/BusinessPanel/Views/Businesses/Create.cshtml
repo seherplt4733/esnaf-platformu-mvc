@@ -1,0 +1,58 @@
+@model EsnafPlatformu.Web.ViewModels.BusinessCreateViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "İşletme Bilgileri";
+}
+
+<section class="py-4">
+    <p class="text-muted">Kurulum Stüdyosu</p>
+    <h1>İşletmenin kimliğini oluşturalım.</h1>
+    <p>İşletmenin temel bilgilerini gir.</p>
+
+    <div class="row g-4 align-items-start mt-2">
+        <div class="col-12 col-lg-7">
+            <form asp-area="BusinessPanel" asp-controller="Businesses"
+                  asp-action="Create" method="post"
+                  class="border rounded-3 p-4 bg-white">
+
+                <div class="mb-3">
+                    <label asp-for="BusinessName" class="form-label">İşletme adı</label>
+                    <input asp-for="BusinessName" class="form-control" />
+                    <span asp-validation-for="BusinessName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Slug" class="form-label">Site kısa adı</label>
+                    <input asp-for="Slug" class="form-control" placeholder="limon-ve-kekik" />
+                    <span asp-validation-for="Slug" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="City" class="form-label">Şehir</label>
+                    <input asp-for="City" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="District" class="form-label">İlçe</label>
+                    <input asp-for="District" class="form-control" />
+                    <span asp-validation-for="District" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="home-cta border-0">Bilgileri gönder</button>
+            </form>
+        </div>
+
+        <aside class="col-12 col-lg-5" aria-labelledby="business-preview-title">
+            <img src="~/images/restaurant-sample.jpg" asp-append-version="true"
+                 class="img-fluid rounded-3"
+                 alt="Ahşap masa ve sandalyelerle döşenmiş örnek restoran" />
+            <h2 id="business-preview-title" class="h4 mt-3">Limon &amp; Kekik örneği</h2>
+        </aside>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="~/Views/Shared/_ValidationScriptsPartial.cshtml" />
+}

@@ -1,0 +1,25 @@
+@model IReadOnlyList<EsnafPlatformu.Entities.MenuItem>
+
+<article class="restaurant-preview" aria-label="Limon ve Kekik site önizlemesi">
+    <div class="preview-browser-bar" aria-hidden="true">● ● ●</div>
+
+    <p class="preview-brand">LİMON &amp; KEKİK</p>
+
+    <div class="preview-body">
+        <div>
+            <h2>Sofrada buluşan güzel hikâyeler.</h2>
+            <p>Akdeniz’den ilham alan mevsim lezzetleri.</p>
+        </div>
+
+        <img src="~/images/restaurant-sample.jpg"
+             asp-append-version="true"
+             alt="Ahşap masa ve sandalyelerle döşenmiş restoran" />
+    </div>
+
+    <ul class="preview-menu" aria-label="Örnek menü">
+        @foreach (var item in Model)
+        {
+            <li>@item.Name – @item.Price TL</li>
+        }
+    </ul>
+</article>

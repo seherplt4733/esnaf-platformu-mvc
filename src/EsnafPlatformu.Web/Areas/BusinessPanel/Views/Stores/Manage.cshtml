@@ -1,0 +1,29 @@
+@model EsnafPlatformu.DTOs.StoreListItemDto
+
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = Model.Name;
+}
+
+<section class="my-5">
+    <a asp-action="Index" class="btn btn-outline-secondary mb-4">
+        Mağazalara dön
+    </a>
+
+    <h1 class="mb-4">@Model.Name</h1>
+
+    @if (Model.Category == 1)
+    {
+        <h2 class="h4">Menü</h2>
+        <p>Bu mağazaya özel menü yönetimi henüz hazır değil.</p>
+    }
+    else if (Model.Category == 2)
+    {
+        <h2 class="h4">Ürünler</h2>
+        <p>Ürün yönetimi henüz hazır değil.</p>
+    }
+    else
+    {
+        <p>Bu mağaza kategorisi için yönetim ekranı bulunamadı.</p>
+    }
+</section>

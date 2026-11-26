@@ -1,0 +1,16 @@
+@model EsnafPlatformu.Web.ViewModels.MenuItemFormViewModel
+
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Menü öğesini düzenle";
+    var menuItemId = ViewData["MenuItemId"];
+}
+
+<section class="mx-auto my-5" style="max-width: 36rem;">
+    <h1 class="mb-4">Menü öğesini düzenle</h1>
+
+    <form asp-area="BusinessPanel" asp-controller="MenuItems"
+          asp-action="Edit" asp-route-id="@menuItemId" method="post">
+        <partial name="_Form" model="Model" />
+    </form>
+</section>
